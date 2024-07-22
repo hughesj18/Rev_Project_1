@@ -1,0 +1,31 @@
+{
+    "products": [
+        {   
+            "name": "Sticky bomb",
+            "category": "Damage",
+            "price": 100
+
+        },
+        {
+            "name": "Paul's Goat Hoof",
+            "category": "Utility",
+            "price": 200
+        },
+        {
+            
+            "name": "Soldier's Syringe",
+            "category":"Damage",
+            "price": 300
+        },
+        {
+            "name": "Atg missile Mk. 1",
+            "category": "Damage",
+            "price": 400
+        },
+        {
+            "name": "Reguvinating Rack",
+            "category": "Healing",
+            "price": 500
+        }
+    ]
+}

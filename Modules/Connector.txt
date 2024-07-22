@@ -1,0 +1,13 @@
+import mysql.connector
+
+def get_connection():
+    # Replace 'your_username' and 'your_password' with your actual MySQL credentials
+    connection = mysql.connector.connect(
+        host='localhost',
+        user='your_username',
+        password='your_password',
+        database='db_name'
+    )
+    return connection
+
+    #Rename this file to 'Connector.py' 
