@@ -25,16 +25,27 @@ class Product:
             category = row[3]
 
             print(f"{name} - {price} - {category}")
-        cursor.execute(query)
-        result = cursor.fetchall()
+        
+        conn.close()
+    
+    def get_product_by_id(self, id):
+        conn = Connector.get_connection()
+        cursor = conn.cursor()
 
-        for row in result:
-            name = row[1]
-            price = row[2]
-            category = row[3]
+        query = "SELECT * FROM products WHERE id = %s"
+        cursor.execute(query, (id,))
+        result = cursor.fetchone()
 
-            product = Product(name, price, category)
-            print(product)
+        if result:
+            self.name = result[1]
+            self.price = result[2]
+            self.category = result[3]
+            #print name, price, category to console
+            print(f"{self.name} - {self.price} - {self.category}")
+            return self
+        else:
+            return False
+
     
 
 def load_products():
@@ -66,4 +77,4 @@ def load_products():
     conn.commit()
     conn.close()  
     print("Products loaded successfully")  
-load_products()
+#load_products()
