@@ -9,6 +9,7 @@ class Product:
 
     def __str__(self):
         return f"{self.name} - {self.price} - {self.category}"
+        
 
     @staticmethod
     def get_all_products():
@@ -47,34 +48,38 @@ class Product:
             return False
 
     
-
-def load_products():
-    conn = conn = Connector.get_connection()
-    cursor = conn.cursor()
-
-        #run a query to drop the table if it exists
-    query = "DROP TABLE IF EXISTS products"
-    cursor.execute(query)
-    query = "CREATE TABLE IF NOT EXISTS products (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price FLOAT, category VARCHAR(255))"
-    cursor.execute(query)
-
-    with open('products.json') as file:
-        products_data = json.load(file)
+    def create_table(self):
+        conn = Connector.get_connection()
+        cursor = conn.cursor()
 
 
-    for product in products_data['products']:
-        name = product['name']
-        category = product['category']
-        price = product['price']
+        query = "DROP TABLE IF EXISTS products"
+        cursor.execute(query)
+        query = "CREATE TABLE IF NOT EXISTS products (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price FLOAT, category VARCHAR(255))"
+        cursor.execute(query)
+
+        conn.commit()
+        conn.close()
+        print("Table created successfully")
+
+    def load_products(self):
+        conn = conn = Connector.get_connection()
+        cursor = conn.cursor()
+
+        with open('products.json') as file:
+            products_data = json.load(file)
 
 
+        for product in products_data['products']:
+            name = product['name']
+            category = product['category']
+            price = product['price']
 
-    
-        query = "INSERT INTO products (name, category, price) VALUES (%s, %s, %s)"
-        values = (name, category, price)
-        cursor.execute(query, values)
-    
-    conn.commit()
-    conn.close()  
-    print("Products loaded successfully")  
-#load_products()
+        
+            query = "INSERT INTO products (name, category, price) VALUES (%s, %s, %s)"
+            values = (name, category, price)
+            cursor.execute(query, values)
+        
+        conn.commit()
+        conn.close()  
+        print("Products loaded successfully")  

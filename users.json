@@ -4,26 +4,37 @@
         "id": 1,
         "name": "John Doe",
         "email": "123456789@gmail.com",
-        "password": "1234"
+        "password": "1234",
+        "adminCred": false
         },
         {
 
         "id": 2,
         "name": "Jane Doe",
         "email": "987654321@gmail.com",
-        "password": "5678"
+        "password": "5678",
+        "adminCred": false
         },
         {
         "id": 3,
         "name": "user",
         "email": "user@mail.com",
-        "password": "pass"
-        },
+        "password": "pass",
+        "adminCred": false
+    },
         {
         "id": 4,
         "name": "admin",
         "email": "admin@mail.com",
-        "password": "admin"
+        "password": "admin",
+        "adminCred": true
+        }
+        ,
+        {
+        "name": "user",
+        "email": "user@mail.com",
+        "password": "pass",
+        "adminCred": false
         }
     ]
 }

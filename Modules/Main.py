@@ -44,7 +44,7 @@ def log_in(username, password):
     conn.close()
 
     if result:
-        customer = Customer.Customer(result[1], result[2], result[3])  #Customer class takes three arguments:  name, password, email
+        customer = Customer.Customer(result[1], result[2], result[3], result[4])  #Customer class takes three arguments:  name, password, email
         return customer
     else:
         return None
@@ -71,15 +71,19 @@ print("What would you like to do?")
 print("1. View products")
 print("2. Add product to cart")
 print("3. View cart")
-# print("4. Checkout")
-# print("5. View orders")
+print("4. Checkout")
+print("5. View account")
 print("6. Exit")
+if user.get_admin_status:
+    print("7. Admin: Drop and recreate table")
+    print("8. Admin: Load products from file")
 
 products = Product.Product("product", "price", "category")
 
 
 
 cart = Cart.Cart(user)
+
 
 while True:
     choice = input("Enter your choice: ")
@@ -94,15 +98,20 @@ while True:
         print("View cart")
         for item in cart.items:
             print(item)
-
     if choice == "4":
         print("Checkout")
         subtotal = cart.subtotal()
         print(f"Subtotal: {subtotal}")
+    if choice == "5":
+        print("View account")
+        user.display_info()
 
 
 
     if choice == "6":
         break
-
-        
+    
+    if choice == "7" and user.get_admin_status:
+        products.create_table()
+    if choice == "8" and user.get_admin_status:
+        products.load_products()
