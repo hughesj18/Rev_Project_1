@@ -20,7 +20,7 @@ class Customer:
     def display_info(self):
         print(f"ID: {self.user['id']}")
         print(f"Name: {self.user['username']}")
-        print(f"Admin: {self.user['pass']}")
+        print(f"Admin: {bool(self.user['adminCred'])}")
         print(f"Email: {self.user['email']}")
 
     def add_to_cart(self, product):

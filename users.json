@@ -35,6 +35,12 @@
         "email": "user@mail.com",
         "password": "pass",
         "adminCred": false
-        }
+        },
+        {
+            "name": "user2",
+            "email": "user2@mail.com",
+            "password": "pass",
+            "adminCred": false
+            }
     ]
 }
