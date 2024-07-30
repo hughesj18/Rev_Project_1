@@ -21,11 +21,12 @@ class Product:
         result = cursor.fetchall()
 
         for row in result:
+            id = row[0]
             name = row[1]
             price = row[2]
             category = row[3]
 
-            print(f"{name} - {price} - {category}")
+            print(f"{id} - {name} - {price} - {category}")
         
         conn.close()
     

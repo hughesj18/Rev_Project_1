@@ -70,6 +70,7 @@ user = log_in(username, password)
 
 logging.info(f"User {username} loaded successfully")
 
+print()
 print("Welcome to the Bazaar Between Time!")
 print("What would you like to do?")
 print("1. View products")
@@ -83,6 +84,7 @@ if bool(user.adminCred):
     print("8. Admin: Load products from file")
     print("9. Admin: Reload users from file") 
 print("0. Exit")
+print()
 products = Product.Product("product", "price", "category")
 
 
@@ -93,6 +95,7 @@ cart = Cart.Cart(user)
 while True:
     choice = input("Enter your choice (help for list): ")
     if choice == "help":
+        print()
         print("1. View products")
         print("2. Add product to cart")
         print("3. View cart")
@@ -104,15 +107,25 @@ while True:
             print("8. Admin: Load products from file")
             print("9. Admin: Reload users from file") 
         print("0. Exit")
+        print()
+
     if choice == "1":
         logging.info("Fetching all products...")
         products.get_all_products()
+        print()
     if choice == "2":
         logging.info("Fetching product from products by ID...")
-        product_id = int(input("Enter the product ID: "))
-        quantity = int(input("Enter the quantity: "))
+        try:
+            product_id = int(input("Enter the product ID: "))
+            quantity = int(input("Enter the quantity: "))
+            if product_id <= 0 or quantity <= 0:
+                raise ValueError("Product ID and quantity must be integers above 0")
+        except ValueError as e:
+            print(f"Error: {e}")
+            continue
         p = products.get_product_by_id(product_id)
         cart.add_item(p, quantity)
+        print()
     if choice == "3":
         print("View cart")
         for item in cart.items:

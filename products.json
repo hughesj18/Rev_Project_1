@@ -15,17 +15,48 @@
             
             "name": "Soldier's Syringe",
             "category":"Damage",
-            "price": 300
+            "price": 200
         },
         {
             "name": "Atg missile Mk. 1",
             "category": "Damage",
-            "price": 400
+            "price": 500
         },
         {
             "name": "Reguvinating Rack",
             "category": "Healing",
-            "price": 500
+            "price": 1500
+        },
+        {
+            "name": "Bitter Root",
+            "category": "Healing",
+            "price": 100
+        },
+        {
+            "name": "Tougher Times",
+            "category": "Utility",
+            "price": 300
+        },
+        {
+            "name": "Warbanner",
+            "category": "Utility",
+            "price": 100
+        },
+        {
+            "name": "Gasoline",
+            "category": "Damage",
+            "price": 100
+        },
+        {
+            "name": "Ukulele",
+            "category": "Damage",
+            "price": 700
+        },
+        {
+            "name": "Shard of Glass",
+            "category": "Damage",
+            "price": 1100
         }
+
     ]
 }
